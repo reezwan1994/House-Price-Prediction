@@ -1,0 +1,47 @@
+House Price Prediction: Project Report
+1. Objective
+The goal of this project is to develop a machine learning model that predicts house prices using the California housing dataset. The model is deployed as a Flask API, allowing users to input features and obtain price predictions.
+
+2. Data Preprocessing and Feature Engineering
+The dataset was obtained from Scikit-learn's fetch_california_housing function.
+It contains features such as MedInc, HouseAge, AveRooms, AveBedrms, Population, AveOccup, Latitude, and Longitude, along with the target variable MedHouseValue.
+Exploratory Data Analysis (EDA):
+The dataset was checked for missing values (none found).
+A correlation matrix and heatmap were used to understand feature relationships.
+Outliers were detected and addressed using standardization and capping.
+Feature Scaling:
+Feature Scaling was not required as we are using Decision Tree Regression model
+3. Model Selection and Optimization
+Decison Tree Regressor models was tested.
+GridSearchCV was used to optimize hyperparameters for Decision Tree model.
+Model Performance Metrics
+Random Forest Regressor Results:
+Root Mean Squared Error (RMSE): Low, indicating good predictive accuracy.
+Mean Absolute Error (MAE): Low, showing minimal deviation from actual prices.
+R² Score: High, indicating strong explanatory power.
+The final model was saved as best_tree_model.pkl.
+
+4. Deployment Strategy
+The trained model was deployed using Flask to provide a REST API.
+The API includes:
+A homepage where users can input house attributes and get predictions.
+A /predict endpoint, which takes JSON input and returns a price prediction.
+Example API Usage
+POST Request to /predict
+
+{
+  "MedInc": 3.5,
+  "HouseAge": 20,
+  "AveBedrms": 1.2,
+  "Population": 300,
+  "AveOccup": 2.5,
+  "Latitude": 37.5,
+  "Longitude": -122.2
+}
+
+Response
+
+{"prediction": 250000}
+(Note: Predictions are multiplied by 100,000 for meaningful values.)
+
+This project successfully built, optimized, and deployed a house price prediction model, making it accessible via an API.
